@@ -11,6 +11,7 @@ struct SecondScreen: View {
     @StateObject var viewModel: MainViewModel
     @State var pickerStates = ["1", "2", "3"]
     @State var selectedItem: String = ""
+    @Binding var showingSecondView: Bool
     
     var body: some View {
         VStack {
@@ -19,13 +20,32 @@ struct SecondScreen: View {
                     Text(pickerStates[index])
                 })
             })
-           
+            Button(action: {
+                viewModel.textFieldText = selectedItem
+            }, label: {
+                Text("Save")
+                    .foregroundColor(.white)
+            })
+            .frame(width: 120, height: 40)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.blue))
+            Button(action: {
+                self.showingSecondView.toggle()
+            }, label: {
+                Text("Main Screen")
+                    .foregroundColor(.white)
+            })
+            .frame(width: 120, height: 40)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.blue))
         }
     }
 }
 
 struct SecondScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SecondScreen(viewModel: MainViewModel())
+        SecondScreen(viewModel: MainViewModel(), showingSecondView: .constant(true))
     }
 }

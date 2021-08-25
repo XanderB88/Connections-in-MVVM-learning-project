@@ -10,6 +10,7 @@ import SwiftUI
 struct FirstScreen: View {
     @StateObject var viewModel: MainViewModel
     @State var typedText: String = ""
+    @Binding var showingFirstView: Bool
     
     var body: some View {
         
@@ -36,12 +37,22 @@ struct FirstScreen: View {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.blue))
+            Button(action: {
+                self.showingFirstView.toggle()
+            }, label: {
+                Text("Main Screen")
+                    .foregroundColor(.white)
+            })
+            .frame(width: 120, height: 40)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.blue))
         }
     }
 }
 
 struct FirstScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FirstScreen(viewModel: MainViewModel())
+        FirstScreen(viewModel: MainViewModel(), showingFirstView: .constant(true))
     }
 }

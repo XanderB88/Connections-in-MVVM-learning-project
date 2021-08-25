@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: MainViewModel
-    @State private var showingView = false
-    
+    @State private var showingFirstView = false
+    @State private var showingSecondView = false
     var body: some View {
-        return Group {
-            if showingView {
-                FirstScreen(viewModel: MainViewModel())
+            if showingFirstView {
+                FirstScreen(viewModel: MainViewModel(), showingFirstView: $showingFirstView)
+            } else if showingSecondView {
+                SecondScreen(viewModel: MainViewModel(), showingSecondView: $showingSecondView)
             } else {
-                MainScreen(viewModel: MainViewModel(), showingView: $showingView)
-            }
+                MainScreen(viewModel: MainViewModel(), showingFirstView: $showingFirstView, showingSecondView: $showingSecondView)
         }
     }
 }
