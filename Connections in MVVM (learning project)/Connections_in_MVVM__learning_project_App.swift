@@ -11,7 +11,7 @@ import SwiftUI
 struct Connections_in_MVVM__learning_project_App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: MainViewModel())
+            ContentView()
         }
     }
 }

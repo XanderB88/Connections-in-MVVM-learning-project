@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
+    @State private var showingView = false
     
     var body: some View {
-        FirstScreen(viewModel: MainViewModel())
+        return Group {
+            if showingView {
+                FirstScreen(viewModel: MainViewModel())
+            } else {
+                MainScreen(viewModel: MainViewModel(), showingView: $showingView)
+            }
+        }
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: MainViewModel())
+        ContentView()
     }
 }

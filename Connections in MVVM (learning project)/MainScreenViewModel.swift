@@ -11,20 +11,6 @@ class MainViewModel: ObservableObject {
     @Published var textFieldText: String = "extFieldText"
     @Published var pickerState: String = "pickerState"
     @Published var state: String = ""
+    @Published var firstScreen: Bool = false
     
-    func saveTextfieldText() {
-
-    }
-    
-    func savePickerState() {
-       
-    }
-    
-    func firstScreen() {
-        
-    }
-    
-    func secondScreen() {
-        
-    }
 }

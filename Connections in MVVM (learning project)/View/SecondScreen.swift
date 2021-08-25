@@ -19,8 +19,7 @@ struct SecondScreen: View {
                     Text(pickerStates[index])
                 })
             })
-            ActionButton(title: "Save", function: viewModel.savePickerState)
-                .environmentObject(viewModel)
+           
         }
     }
 }

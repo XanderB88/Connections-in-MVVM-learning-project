@@ -30,6 +30,7 @@ struct FirstScreen: View {
                 typedText = ""
             }, label: {
                 Text("Save")
+                    .foregroundColor(.white)
             })
             .frame(width: 120, height: 40)
             .background(
