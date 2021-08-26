@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstScreen: View {
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @State var typedText: String = ""
     @Binding var showingFirstView: Bool
     
@@ -53,6 +53,6 @@ struct FirstScreen: View {
 
 struct FirstScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FirstScreen(viewModel: MainViewModel(), showingFirstView: .constant(true))
+        FirstScreen(showingFirstView: .constant(true))
     }
 }

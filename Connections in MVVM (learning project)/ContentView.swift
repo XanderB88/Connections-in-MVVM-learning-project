@@ -12,11 +12,11 @@ struct ContentView: View {
     @State private var showingSecondView = false
     var body: some View {
             if showingFirstView {
-                FirstScreen(viewModel: MainViewModel(), showingFirstView: $showingFirstView)
+                FirstScreen(showingFirstView: $showingFirstView)
             } else if showingSecondView {
-                SecondScreen(viewModel: MainViewModel(), showingSecondView: $showingSecondView)
+                SecondScreen(showingSecondView: $showingSecondView)
             } else {
-                MainScreen(viewModel: MainViewModel(), showingFirstView: $showingFirstView, showingSecondView: $showingSecondView)
+                MainScreen(showingFirstView: $showingFirstView, showingSecondView: $showingSecondView)
         }
     }
 }

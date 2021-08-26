@@ -9,7 +9,7 @@ import Foundation
 
 class MainViewModel: ObservableObject {
     @Published var textFieldText: String = "extFieldText"
-    @Published var pickerState: String = "pickerState"
+    @Published var pickerState: Int = 0
     @Published var state: String = ""
     @Published var firstScreen: Bool = false
     

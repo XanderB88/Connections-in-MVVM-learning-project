@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @Binding var showingFirstView: Bool
     @Binding var showingSecondView: Bool
     var body: some View {
@@ -16,7 +16,7 @@ struct MainScreen: View {
             VStack(spacing: 40) {
                 Text(viewModel.textFieldText)
                     .font(.title)
-                Text(viewModel.pickerState)
+                Text(String(viewModel.pickerState))
                     .font(.title)
             }
             HStack(spacing: 40) {
@@ -42,12 +42,11 @@ struct MainScreen: View {
                         .foregroundColor(.blue))
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
 struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        MainScreen(viewModel: MainViewModel(), showingFirstView: .constant(false), showingSecondView: .constant(false))
+        MainScreen(showingFirstView: .constant(false), showingSecondView: .constant(false))
     }
 }

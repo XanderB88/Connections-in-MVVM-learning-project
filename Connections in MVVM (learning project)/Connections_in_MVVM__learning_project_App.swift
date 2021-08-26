@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Connections_in_MVVM__learning_project_App: App {
+    @StateObject var modelview = MainViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(modelview)
         }
     }
 }

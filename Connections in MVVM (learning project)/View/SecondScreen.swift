@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct SecondScreen: View {
-    @StateObject var viewModel: MainViewModel
-    @State var pickerStates = ["1", "2", "3"]
-    @State var selectedItem: String = ""
+    @EnvironmentObject var viewModel: MainViewModel
+    @State var pickerStates = [1, 2, 3]
+    @State var selectedItem: Int = 0
     @Binding var showingSecondView: Bool
     
     var body: some View {
         VStack {
+            Text(String(viewModel.pickerState))
+                .foregroundColor(.black)
             Picker("States", selection: $selectedItem, content: {
                 ForEach(0..<pickerStates.count, content: { index in
-                    Text(pickerStates[index])
+                    Text(String(pickerStates[index]))
                 })
             })
             Button(action: {
-                viewModel.textFieldText = selectedItem
+                    viewModel.pickerState = pickerStates[selectedItem]
             }, label: {
                 Text("Save")
                     .foregroundColor(.white)
@@ -46,6 +48,6 @@ struct SecondScreen: View {
 
 struct SecondScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SecondScreen(viewModel: MainViewModel(), showingSecondView: .constant(true))
+        SecondScreen(showingSecondView: .constant(true))
     }
 }
